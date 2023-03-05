@@ -4,7 +4,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Контроллер панели
 /// </summary>
-public class PanelController : MonoBehaviour
+public class UpPanelController : MonoBehaviour
 {
     [SerializeField]
     private Toggle _mainToggleDisplay;
