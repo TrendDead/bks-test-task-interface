@@ -21,6 +21,15 @@ public class ObjectView : MonoBehaviour
     public void ChangeDisplayObject(bool isDisplay)
     {
         _meshRendererObject.enabled = isDisplay;
-        //_rendererObject.material.color = new Color(_rendererObject.material.color.r, _rendererObject.material.color.g, _rendererObject.material.color.b, 0f);
+    }
+
+    /// <summary>
+    /// Изменение прозрачность обекта
+    /// </summary>
+    /// <param name="transparency">Степень прозрачности</param>
+    public void ChangingTransparencyObject(float transparency)
+    {
+        _rendererObject.material.color = new Color(_rendererObject.material.color.r, _rendererObject.material.color.g,
+            _rendererObject.material.color.b, transparency);
     }
 }

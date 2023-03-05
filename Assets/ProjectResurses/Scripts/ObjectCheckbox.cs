@@ -1,11 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Чекбокс конкретного объекта
+/// Чекбокс объекта
 /// </summary>
 public class ObjectCheckbox : MonoBehaviour
 {
+    public ObjectView SceneObject { get; private set; }
     public Toggle ToggleSelect => _toggleSelect;
     public Toggle ToggleDisplay => _toggleDisplay;
 
@@ -14,22 +16,19 @@ public class ObjectCheckbox : MonoBehaviour
     [SerializeField]
     private Toggle _toggleDisplay;
 
-    private ObjectView _sceneObject;
-
     /// <summary>
     /// Обновление информации об привязанном объекте на сцене
     /// </summary>
     /// <param name="newObject">Новая ссылка на объект сценны</param>
     public void UpdateObjectInfo(ObjectView newObject)
     {
-        _sceneObject = newObject;
+        SceneObject = newObject;
     }
 
     private void Start()
     {
-        _toggleDisplay.onValueChanged.AddListener(delegate {
-            _sceneObject.ChangeDisplayObject(_toggleDisplay.isOn);
-        });
+        _toggleSelect.isOn = false;
+        _toggleDisplay.onValueChanged.AddListener(SceneObject.ChangeDisplayObject);
     }
 
     private void OnDestroy()
